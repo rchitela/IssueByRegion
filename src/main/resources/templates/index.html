@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>Mian Page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"></script>
+    <script src="./app.js"></script>
+</head>
+
+<body>
+    <div data-ng-app="myApp" data-ng-controller="myCtrl as ctrl">
+        <p></p>
+           <button data-ng-click="ctrl.retrieve();" name="button" type="button">Issue Locations</button>
+           {{locations}}
+
+    </div>
+</body>
+</html>

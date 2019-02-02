@@ -1,0 +1,115 @@
+package com.flights.region.flighttickets.model;
+
+//import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="flights", catalog="airlines")
+public class Flight {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="id")
+	private Integer id;
+	
+	@Column(name="flightid")
+	private String flightid;
+	
+	@Column(name="flightfrom")
+	private String flightfrom;
+	
+	@Column(name="flightto")
+	private String flightto;
+	
+	@Column(name="date")
+	private String date;
+	
+	@Column(name="region")
+	private String region;
+	
+	@Column(name="carrier")
+	private String carrier;
+	
+	public Flight() {
+	}
+
+	public Flight(String flightid, String flightfrom, String flightto, String date, 
+			String region, String carrier) {
+		this.flightid = flightid;
+		this.flightfrom = flightfrom;
+		this.flightto = flightto;
+		this.date = date;
+		this.region = region;
+		this.carrier = carrier;
+	}
+	
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getFlightid() {
+		return flightid;
+	}
+
+	public void setFlightid(String flightid) {
+		this.flightid = flightid;
+	}
+
+	public String getFlightfrom() {
+		return flightfrom;
+	}
+
+	public void setFlightfrom(String flightfrom) {
+		this.flightfrom = flightfrom;
+	}
+
+	public String getFlightto() {
+		return flightto;
+	}
+
+	public void setFlightto(String flightto) {
+		this.flightto = flightto;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public String getRegion() {
+		return region;
+	}
+
+	public void setRegion(String region) {
+		this.region = region;
+	}
+
+	public String getCarrier() {
+		return carrier;
+	}
+
+	public void setCarrier(String carrier) {
+		this.carrier = carrier;
+	}
+
+	@Override
+	public String toString() {
+		return "Flight [flightId=" + flightid + ", from=" + flightfrom + ", to=" + flightto + ", date=" 
+				+ date + ", region=" + region + ", carrier=" + carrier + "]";
+	}
+	
+
+}
