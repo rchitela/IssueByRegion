@@ -1,4 +1,4 @@
-package com.flights.region.flighttickets.model;
+package com.region.us.issues.flighttickets.model;
 
 //import java.util.Date;
 
@@ -33,6 +33,9 @@ public class Flight {
 	@Column(name="region")
 	private String region;
 	
+	@Column(name="location")
+	private String location;
+	
 	@Column(name="carrier")
 	private String carrier;
 	
@@ -40,12 +43,13 @@ public class Flight {
 	}
 
 	public Flight(String flightid, String flightfrom, String flightto, String date, 
-			String region, String carrier) {
+			String region, String location, String carrier) {
 		this.flightid = flightid;
 		this.flightfrom = flightfrom;
 		this.flightto = flightto;
 		this.date = date;
 		this.region = region;
+		this.location = location;
 		this.carrier = carrier;
 	}
 	
@@ -105,11 +109,18 @@ public class Flight {
 		this.carrier = carrier;
 	}
 
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
 	@Override
 	public String toString() {
-		return "Flight [flightId=" + flightid + ", from=" + flightfrom + ", to=" + flightto + ", date=" 
-				+ date + ", region=" + region + ", carrier=" + carrier + "]";
+		return "Flight [id=" + id + ", flightid=" + flightid + ", flightfrom=" + flightfrom + ", flightto=" + flightto
+				+ ", date=" + date + ", region=" + region + ", location=" + location + ", carrier=" + carrier + "]";
 	}
-	
 
 }

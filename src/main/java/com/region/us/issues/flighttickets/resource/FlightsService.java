@@ -1,5 +1,6 @@
-package com.flights.region.flighttickets.controller;
+package com.region.us.issues.flighttickets.resource;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,11 +13,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.flights.region.flighttickets.Repository.FlightsRepository;
-import com.flights.region.flighttickets.model.Flight;
+import com.region.us.issues.flighttickets.Repository.FlightsRepository;
+import com.region.us.issues.flighttickets.model.Flight;
 
 @RestController
-@RequestMapping("/flights/us")
+@RequestMapping("/api/flights")
 public class FlightsService {
 
 	private static final Logger logger = LoggerFactory.getLogger(FlightsService.class);
@@ -59,6 +60,11 @@ public class FlightsService {
 		return 	flightsRepository.findByRegion(region).stream().collect(Collectors.toList());
 	}
 	
+	@GetMapping("/location/{location}")
+	public List<Flight> getFlightsByLocation(@PathVariable("location") final String location) {
+		logger.info("location: " + location);
+		return 	flightsRepository.findByLocation(location).stream().collect(Collectors.toList());
+	}
 	
 	@GetMapping("/carrier/{carrier}")
 	public List<Flight> getFlightsByCarrier(@PathVariable("carrier") final String carrier) {
@@ -74,17 +80,22 @@ public class FlightsService {
 		return getFlightsByFlightId(flight.getFlightid());
 	}
 	
-//	public List<Flight> getFlightsById(String fid) {
-//		return flightsRepository
-//				.findFlightsByFlightsId(fid)
-//				.stream()
-//				.collect(Collectors.toList());
-//	}
+	@GetMapping("/locations")
+	public List<String> getLocations() {		
+		List<Flight> flights =  flightsRepository.findAll();
+		List<String> locations = new ArrayList<String>();
+		for(Flight flight: flights) {
+			locations.add(flight.getLocation());
+		}		
+		return locations;
+	}
 	
-//	public List<Flight> getFlightsFromAirport(String from) {
-//		return flightsRepository
-//				.findFlightsFrom(from)
-//				.stream()
-//				.collect(Collectors.toList());
-//	}
+	@PostMapping("/delete/{flightid}")
+	public List<Flight> delete(@PathVariable("flightid") final String flightid) {
+		List<Flight> flights = flightsRepository.findByFlightid(flightid);
+		for(Flight flight: flights)
+			flightsRepository.delete(flight);		
+		return getFlightsByFlightId(flightid);
+	}
+	
 }

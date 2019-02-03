@@ -1,4 +1,4 @@
-package com.flights.region.flighttickets.model;
+package com.region.us.issues.flighttickets.model;
 
 import java.util.List;
 

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>Mian Page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"></script>
+    <script src="./app.js"></script>
+    <style>
+    .bodytemplate {
+    font-family: Tahoma, Geneva, sans-serif;
+    }
+</style>
+</head>
+
+<body>
+    <div data-ng-app="myApp" data-ng-controller="myCtrl as ctrl" class="bodytemplate">
+        <br><br>
+        <p>
+            <center>
+            Click on "Issues Locations" button to retrieve "Locations" of all issues <br><br>
+            &amp;<br><br> 
+            click on "Flights Locations" button to retrieve "Locations" of all flights  
+            <br><br><br><br>
+            <button data-ng-click="ctrl.issuesretrieve();" name="button" type="button">Issues Locations</button>
+            <br><br>
+            {{issuelocations}}
+            <br><br>
+            <button data-ng-click="ctrl.flightsretrieve();" name="button" type="button">Flights Locations</button>
+            <br><br>
+            {{flightlocations}}
+            <br><br>
+            </center>
+        </p>
+
+    </div>
+</body>
+</html>

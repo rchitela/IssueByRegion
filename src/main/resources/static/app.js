@@ -7,15 +7,26 @@ app.config(['$httpProvider', function($httpProvider){
 }]);
 
 app.controller('myCtrl', function($scope, $http) {
-    this.retrieve = function() {
+    this.issuesretrieve = function() {
         // console.log('Retrieve button was clicked');
         $http.get('http://localhost:8855/api/issues/locations')
         .then(function(response){
             console.log('inside success' + response);
-            $scope.locations = response.data;
+            $scope.issuelocations = response.data;
         }, function(response) {
             console.log('Something went wrong, hence came here');
     
         });
-    }
+    };
+
+    this.flightsretrieve = function() {
+        // console.log('Retrieve button was clicked');
+        $http.get('http://localhost:8855/api/flights/locations')
+        .then(function(response){
+            console.log('inside success' + response);
+            $scope.flightlocations = response.data;
+        }, function(response) {
+            console.log('Something went wrong, hence came here');    
+        });
+    };
 });

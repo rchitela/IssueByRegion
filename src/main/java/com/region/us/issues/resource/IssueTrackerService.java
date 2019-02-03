@@ -112,4 +112,12 @@ public class IssueTrackerService {
 		}
 		return tickets;
 	}
+	
+	
+	@PostMapping("/delete/{ticketid}")
+	public Issue delete(@PathVariable("ticketid") final String ticketid) {
+		Issue issue = issueRepository.findByTicketid(ticketid);
+		issueRepository.delete(issue);		
+		return getIssueByTicketid(ticketid);
+	}
 }
