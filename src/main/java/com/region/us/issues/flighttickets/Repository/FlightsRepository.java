@@ -3,9 +3,11 @@ package com.region.us.issues.flighttickets.Repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import com.region.us.issues.flighttickets.model.Flight;
 
+@Repository
 public interface FlightsRepository extends JpaRepository<Flight, Integer> {
 
 	List<Flight> findByFlightid(String flightid);	

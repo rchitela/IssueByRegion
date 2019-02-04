@@ -37,9 +37,8 @@ public class Issue {
 	public Issue() {
 	}
 	
-	public Issue(Integer id, String ticketid, String description, String priority, String severity,
+	public Issue(String ticketid, String description, String priority, String severity,
 			String currentstatus, String openeddate, String closeddate, String location, String region) {
-		this.id = id;
 		this.ticketid = ticketid;
 		this.description = description;
 		this.priority = priority;
